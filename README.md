@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AOS
+Animate On Scroll Library
 
-## Getting Started
+# NEXTJS 14 IMPORT AOS & Style AOS
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```tsx
+"use client";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#  Initialize AOS when the component is mounted on the client
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```tsx
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration
+      once: true,     // Whether animation should happen only once
+    });
+  }, []);
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+# The animated text
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
+       <div
+            data-aos="zoom-in-up"  // Trigger AOS animation on scroll
+            data-aos-offset="200"  // Trigger earlier
+            className=" border p-2 border-gray-500 rounded-md text-3xl w-96 h-96 m-auto "
+          >
+        {/* Text with TailwindCSS border styling */}
+        <span className="border-b-4 border-transparent hover:border-blue-500 transition duration-500 ease-in-out">
+          Hello World
+          <span className='text-sm text-gray-500 font-mono block mt-5'>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda illum tempora ipsa dolorum, quo cumque similique aut autem voluptates. Rerum consectetur perferendis             tempore reprehenderit officia amet omnis aliquam modi vel.
+          </span>
+        </span>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+        
+      </div>
+```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
